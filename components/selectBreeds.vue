@@ -1,0 +1,67 @@
+<template>
+  <div class="contanner-select">
+    <a-select
+      show-search
+      placeholder="Select a Breds"
+      option-filter-prop="children"
+      :filter-option="filterOption"
+      class="breed_select"
+      @change="handleChange"
+    >
+      <a-select-option v-for="(photo, index) in photos" :key="index" @click="setData(photo)">
+        {{ photo.name }}
+      </a-select-option>
+    </a-select>
+    <div>{{ show }}</div>
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+export default {
+  data () {
+    return {
+      photos: [],
+      show: ''
+    }
+  },
+  mounted () {
+    this.getData()
+  },
+  methods: {
+    handleChange (value) {
+      if (this.photos[value].name === this.photos.name) {
+        this.show = this.photos.url
+      } else {
+        this.show = ''
+      }
+      console.log(`selected ${this.photos[value].name}`)
+      console.log(this.photos[value].name, 'yy')
+    },
+    filterOption (input, option) {
+      return (
+        option.componentOptions.children[0].text.toLowerCase().includes(input.toLowerCase())
+      )
+    },
+    async getData () {
+      const res = await axios.get('https://api.thedogapi.com/v1/breeds')
+      this.photos = res.data
+    },
+    setData (obj) {
+      this.$router.push(`/photos/${obj.image.id}`)
+    }
+  }
+}
+</script>
+
+<style>
+.contanner-select{
+  margin-bottom: 30px;
+}
+.breed_select {
+  width: 500px;
+}
+.breed_select .ant-select-selection--single {
+  border-radius: 20px;
+}
+</style>
