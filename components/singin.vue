@@ -2,15 +2,25 @@
   <div class="contanner-signIn">
     <form class="form-signIn">
       <h2 class="header-signIn">
-        Sign in
+        Log in
       </h2>
-      <div>
+      <div class="box-input">
         <label for="email" class="text email">Email</label>
-        <input v-model="formData.email" type="email" class="input">
+        <input
+          v-model="formData.email"
+          type="email"
+          class="input"
+          placeholder="email"
+        >
       </div>
-      <div>
+      <div class="box-input">
         <label for="password" class="text">Password</label>
-        <input v-model="formData.password" type="password" class="input">
+        <input
+          v-model="formData.password"
+          type="password"
+          class="input"
+          placeholder="password"
+        >
       </div>
       <a-button type="primary" class="signIp-button" @click="signInUser">
         Sign in
@@ -41,8 +51,8 @@ export default {
   data () {
     return {
       formData: {
-        email: '',
-        password: ''
+        email: 'kannika@hotmail.com',
+        password: 'kannika'
       }
     }
   },
@@ -57,6 +67,7 @@ export default {
           this.formData.password
         )
         this.setEmail(user.user.email)
+        // console.log(user.user.email, 'email')
         this.$router.push('/photos')
       } catch (e) {
         alert('ไม่พบ User')
@@ -70,7 +81,7 @@ export default {
 .contanner-signIn {
   background: #f7f5f5;
   width: 390px;
-  height: 420px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,15 +91,19 @@ export default {
 .form-signIn {
   display: flex;
   flex-direction: column;
-  /* margin-top: 25px; */
 }
 .header-signIn {
   font-size: 34px;
   text-align: center;
-  margin: 30px 0px 25px;
+  margin: 30px 0px 10px;
+}
+.box-input {
+  display: flex;
+  flex-direction: column;
 }
 .text {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 500;
 }
 .email {
   margin-right: 32px;

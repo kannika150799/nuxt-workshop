@@ -60,7 +60,7 @@ export default {
   display: block;
   font-weight: 300;
   font-size: 100px;
-  color: #35495e;
+  color: #eef0f1;
   letter-spacing: 1px;
 }
 
@@ -74,5 +74,9 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+.button--grey {
+ border: 1px solid #f2f5f8;
+    color: #f0f3f5;
 }
 </style>

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <facebookLogin />
+    <listDog />
   </div>
 </template>
 
 <script>
-import facebookLogin from '~/components/facebookLogin.vue'
+import listDog from '~/components/listDog.vue'
 export default {
   components: {
-    facebookLogin
+    listDog
   }
 
 }

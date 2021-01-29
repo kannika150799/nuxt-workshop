@@ -6,13 +6,11 @@
       option-filter-prop="children"
       :filter-option="filterOption"
       class="breed_select"
-      @change="handleChange"
     >
       <a-select-option v-for="(photo, index) in photos" :key="index" @click="setData(photo)">
         {{ photo.name }}
       </a-select-option>
     </a-select>
-    <div>{{ show }}</div>
   </div>
 </template>
 
@@ -21,23 +19,13 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      photos: [],
-      show: ''
+      photos: []
     }
   },
   mounted () {
     this.getData()
   },
   methods: {
-    handleChange (value) {
-      if (this.photos[value].name === this.photos.name) {
-        this.show = this.photos.url
-      } else {
-        this.show = ''
-      }
-      console.log(`selected ${this.photos[value].name}`)
-      console.log(this.photos[value].name, 'yy')
-    },
     filterOption (input, option) {
       return (
         option.componentOptions.children[0].text.toLowerCase().includes(input.toLowerCase())

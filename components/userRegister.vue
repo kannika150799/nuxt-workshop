@@ -5,32 +5,30 @@
         Register
       </h2>
 
-      <div>
+      <div class="box-input">
         <label class="text email" for="email">Email</label>
         <input
           id="txtEmail"
           v-model="formData.email"
           class="input"
           type="email"
+          placeholder="email"
         >
       </div>
-      <div>
+      <div class="box-input">
         <label class="text" for="password">Password</label>
         <input
           id="txtPassword"
           v-model="formData.password"
           class="input"
           type="password"
+          placeholder="password"
         >
       </div>
       <a-button type="primary" class="button" @click="createUser">
         Register
       </a-button>
-      <a-button type="primary" class="button">
-        <nuxt-link to="/login">
-          Sign in
-        </nuxt-link>
-      </a-button>
+      <img class="icon-home" src="@/assets/icons8-home-24.png" @click="home">
     </form>
   </div>
 </template>
@@ -56,6 +54,9 @@ export default {
       } catch (e) {
         alert(e)
       }
+    },
+    home () {
+      this.$router.push('/')
     }
   }
 }
@@ -76,14 +77,19 @@ export default {
 .form-register {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .header-register {
   text-align: center;
-  margin-bottom: 40px;
   font-size: 34px;
+}
+.box-input {
+  display: flex;
+  flex-direction: column;
 }
 .text {
   font-size: 18px;
+  font-weight: 500;
 }
 .email {
   margin-right: 32px;
@@ -95,11 +101,15 @@ export default {
   margin-bottom: 10px;
   border: transparent;
   border-radius: 3px;
-  margin-bottom: 20px;
 }
 .button {
   align-self: center;
   width: 135px;
-  margin: 15px 0px 0px;
+  margin: 15px 0px 10px;
+}
+.icon-home {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 </style>

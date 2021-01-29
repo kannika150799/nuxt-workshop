@@ -10,35 +10,35 @@
           <img :src="photo.url" alt="dog" class="contanner-photo-id">
           <div class="contanner-detail-id">
             <div class="name">
-              <p class="name-dog">
+              <p class="detail-dog">
                 Name :
               </p>
               <p>&nbsp;{{ photo.breeds[0].name ? photo.breeds[0].name : '-' }}</p>
             </div>
 
             <div class="name">
-              <p class="name-dog">
+              <p class="detail-dog">
                 Bred for :
               </p>
               <p>&nbsp;{{ photo.breeds[0].bred_for ? photo.breeds[0].bred_for : '-' }}</p>
             </div>
 
             <div class="name">
-              <p class="name-dog">
+              <p class="detail-dog">
                 Life span :
               </p>
               <p>&nbsp;{{ photo.breeds[0].life_span ? photo.breeds[0].life_span : '-' }}</p>
             </div>
 
             <div class="name">
-              <p class="name-dog">
+              <p class="detail-dog">
                 Origin :
               </p>
               <p>&nbsp;{{ photo.breeds[0].origin ? photo.breeds[0].origin : '-' }}</p>
             </div>
 
             <div class="name">
-              <p class="name-dog">
+              <p class="detail-dog">
                 Temperament :&nbsp;
               </p>
               <p class="temperament">
@@ -68,13 +68,14 @@ export default {
       id: this.$route.params.id
     }
   },
-  beforeCreate () {
-    this.$fireModule.auth().onAuthStateChanged((user) => {
-      if (!user) {
-        this.$router.replace('/login')
-      }
-    })
-  },
+  middleware: 'auth',
+  // beforeCreate () {
+  //   this.$fireModule.auth().onAuthStateChanged((user) => {
+  //     if (!user) {
+  //       this.$router.replace('/login')
+  //     }
+  //   })
+  // },
   mounted () {
     this.getData()
   },
@@ -96,7 +97,6 @@ export default {
     display: flex;
   flex-direction: column;
   align-items: center;
-  /* background: #ece5e5; */
 }
 .box-id {
   margin-top: 30px;
@@ -131,7 +131,7 @@ export default {
   display: flex;
   flex-direction: row;
 }
-.name-dog {
+.detail-dog {
   font-weight: 700;
 }
 .temperament {

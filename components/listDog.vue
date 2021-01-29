@@ -7,7 +7,6 @@
         class="photo"
         @click="setData(photo)"
       >
-        <!-- <div> -->
         <img
           :src="photo.image ? photo.image.url : require('~/assets/unnamed.jpg')"
           alt="photos dog"
@@ -16,7 +15,6 @@
         <p class="text-name">
           {{ photo.name }}
         </p>
-        <!-- </div> -->
       </div>
     </div>
   </div>
